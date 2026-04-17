@@ -60,9 +60,9 @@
   transform: translateY(-3px);
 }
 
-.contact-section__links img {
-  width: 32px;
-  height: 32px;
+.contact-section__links svg {
+  width: 16px;
+  height: 16px;
   object-fit: contain;
 }
 
@@ -74,7 +74,7 @@
   min-height: 620px;
 }
 
-.contact-section__illustration avg {
+.contact-section__illustration img {
   position: relative;
   width: clamp(560px, 63vw, 820px);
 }
