@@ -1,0 +1,55 @@
+#experience {
+  display: flex;
+  min-height: calc(100svh - var(--headersize, 0px));
+  flex-direction: column;
+}
+
+#experience.container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  padding-bottom: 30px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.experience-deck {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.exp-card {
+  max-width: 500px;
+  background: var(--indigo);
+  border: 3px solid var(--purple);
+  border-radius: var(--border-rad);
+  padding: 36px 42px;
+  color: var(--white);
+  position: relative;
+  flex: 1;
+}
+
+.exp-card-title {
+  color: var(--orange);
+  text-transform: uppercase;
+  font-family: var(--ff-section-title);
+  font-size: var(--fs-content-title);
+  font-weight: 900;
+}
+
+.exp-card-company {
+  font-size: var(--fs-content-title);
+}
+
+.exp-card-duration {
+  color: var(--ash);
+  margin-bottom: 16px;
+  font-size: var(--fs-meta);
+}
+
+.exp-card-description {
+  color: var(--white);
+  font-size: var(--fs-content);
+}

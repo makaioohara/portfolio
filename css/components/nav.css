@@ -1,0 +1,233 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.nav-list {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 20px 32px;
+}
+
+.nav-list::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-rad, 999px);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.nav-list > * {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-list a {
+  color: var(--white);
+  font-family: var(--ff-menu);
+  font-weight: 500;
+  font-size: var(--fs-menu);
+  white-space: nowrap;
+}
+
+.nav-list a:hover {
+  text-shadow: 0px 0px 0.8px var(--lime);
+  color: var(--lime);
+}
+
+.nav-list a.active {
+  text-shadow: 0px 0px 0.8px var(--lime);
+  color: var(--lime);
+}
+
+.nav-more {
+  position: static;
+}
+
+.nav-more-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.nav-more-icon img {
+  width: 18px;
+  height: auto;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-more-icon[aria-expanded="true"] img {
+  transform: rotate(180deg);
+}
+
+.nav-more-icon:focus-visible,
+.nav-list a:focus-visible,
+.more-menu-card:focus-visible,
+.more-menu-link:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 4px;
+}
+
+.nav-more-menu {
+  position: absolute;
+  top: calc(var(--headersize, 72px) - 16px);
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transit);
+  border-radius: var(--border-rad, 16px);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  max-width: calc(100vw - 32px);
+}
+
+.nav-more-menu[hidden] {
+  display: none;
+}
+
+.nav-more-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.more-menu-left {
+  display: flex;
+  gap: 32px;
+}
+
+.more-menu-card {
+  width: 220px;
+  flex-shrink: 0;
+  position: relative;
+  border-radius: var(--border-rad);
+  overflow: hidden;
+}
+
+.more-menu-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  transition: var(--transit);
+}
+
+.more-menu-card:hover img {
+  filter: brightness(1.1);
+}
+
+.more-menu-card-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  white-space: normal;
+  word-break: break-word;
+}
+
+.more-menu-card-text span {
+  color: var(--white);
+  font-family: var(--ff-menu);
+  font-weight: 500;
+  font-size: var(--fs-menu);
+  transition: var(--transit);
+}
+
+.more-menu-card-text p {
+  color: var(--ash);
+  font-family: var(--ff-meta);
+  font-size: var(--fs-meta);
+  transition: var(--transit);
+}
+
+.more-menu-right {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.more-menu-link {
+  display: block;
+}
+
+.more-menu-link span {
+  color: var(--white);
+  font-family: var(--ff-menu);
+  font-weight: 500;
+  font-size: var(--fs-menu);
+  transition: var(--transit);
+}
+
+.more-menu-link p {
+  color: var(--ash);
+  font-family: var(--ff-meta);
+  font-size: var(--fs-meta);
+  transition: var(--transit);
+}
+
+.more-menu-card-text:hover span,
+.more-menu-card-text:hover p,
+.more-menu-link:hover span,
+.more-menu-link:hover p {
+  text-shadow: 0 0 0.8px var(--lime);
+  color: var(--lime);
+}
+
+@media (max-width: 768px) {
+  .nav-list {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .nav-more-menu {
+    flex-direction: column;
+    width: calc(100vw - 64px);
+  }
+
+  .more-menu-left {
+    flex-direction: column;
+  }
+
+  .more-menu-card {
+    width: 100%;
+  }
+
+  .more-menu-right {
+    width: 100%;
+  }
+}

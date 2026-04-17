@@ -1,0 +1,32 @@
+@import url("./base/custom.css");
+@import url("./base/fonts.css");
+@import url("./base/reset.css");
+@import url("./base/variables.css");
+@import url("./components/loading.css");
+@import url("./components/nav.css");
+@import url("./sections/about.css");
+@import url("./sections/contact.css");
+@import url("./sections/experience.css");
+@import url("./sections/home.css");
+@import url("./sections/projects.css");
+@import url("./sections/skills.css");
+
+section h3 {
+  margin-bottom: 16px;
+  color: var(--pink);
+  font-family: var(--ff-section-title);
+  font-size: var(--fs-section-title);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.section-header {
+  text-align: center;
+}
+
+.section-header p {
+  margin-bottom: 32px;
+  color: var(--white);
+  font-family: var(--ff-content);
+  font-size: var(--fs-section-desc);
+}

@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shahriar Portfolio | DevOps Engineer & Cloud Architect</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.23/dist/lenis.css"
+    />
+    <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <div id="loader">
+      <div class="loader-inner">
+        <img
+          src="assets/images/LoadingFlower.png"
+          alt="Loading animation"
+          class="loader-img"
+        />
+      </div>
+    </div>
+    <main id="content">
+      <header>
+        <nav class="nav" aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li><a href="#home" class="active">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#experience">EXPERIENCE</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li class="nav-more">
+              <button
+                type="button"
+                id="nav-more-toggle"
+                class="nav-more-icon"
+                aria-expanded="false"
+                aria-controls="nav-more-menu"
+                aria-haspopup="true"
+                aria-label="Open more navigation links"
+              >
+                <img src="assets/images/Ham.svg" alt="" aria-hidden="true" />
+              </button>
+              <div id="nav-more-menu" class="nav-more-menu" hidden>
+                <div class="more-menu-left">
+                  <a href="#uses" class="more-menu-card">
+                    <img
+                      src="assets/images/NavUses.jpg"
+                      alt="Uses workspace preview"
+                    />
+                    <div class="more-menu-card-text">
+                      <div><span>USES</span></div>
+                      <p>A peek into my digital workspace</p>
+                    </div>
+                  </a>
+                  <a href="#bucket" class="more-menu-card">
+                    <img
+                      src="assets/images/NavBucketList.jpg"
+                      alt="Bucket List Card"
+                    />
+                    <div class="more-menu-card-text">
+                      <div><span>BUCKET LIST</span></div>
+                      <p>Things to do at least once in life</p>
+                    </div>
+                  </a>
+                </div>
+                <div class="more-menu-right">
+                  <a href="#stats" class="more-menu-link">
+                    <div><span>HOBBIES</span></div>
+                    <p>New skills and adventures</p>
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <section class="container" id="home">
+        <div class="home-left">
+          <h1>I&rsquo;m Shahriar</h1>
+          <p>Devops Engineer, Cloud Architect</p>
+        </div>
+        <div class="home-deck">
+          <div class="home-card home-card-front">
+            <img src="assets/images/Photocard1.png" alt="Front Card" />
+          </div>
+          <div class="home-card home-card-back">
+            <img src="assets/images/Photocard2.png" alt="Back Card" />
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="about">
+        <div class="section-header">
+          <h3>About</h3>
+          <p>
+            &lt; This is where you can get to know me better and explore my
+            journey as a Front-End Software Engineer /&gt;
+          </p>
+        </div>
+
+        <div class="about-deck">
+          <div class="about-left">
+            <div class="about-card">
+              <p class="about-card-title">Bio</p>
+              <p>
+                I am a Software Engineer who works with the React ecosystem and
+                writes to teach people how to rebuild and redefine fundamental
+                concepts through mental models. I was born in 2001 in Jakarta,
+                Indonesia.
+              </p>
+            </div>
+            <a href="#" class="about-card about-card-resume">
+              <p>My Resume&ensp;&ensp;</p>
+              <img src="assets/images/ResumeIcon.svg" alt="Resume Icon" />
+            </a>
+          </div>
+
+          <div class="about-right">
+            <div class="about-card about-card-intro">
+              <p>
+                I value simplicity, steady improvement, and building meaningful
+                solutions&mdash;focusing on clean design, practical decisions,
+                and quality work that creates real impact.
+              </p>
+            </div>
+            <div class="about-card about-card-current">
+              <p class="about-card-title">What I&rsquo;m Up To Now</p>
+              <div class="about-current-content">
+                <img src="assets/images/AboutQMark.png" alt="Question Mark" />
+                <ul>
+                  <li>
+                    I&rsquo;m a full-stack engineer at Dimension while working
+                    remotely
+                  </li>
+                  <li>
+                    I regularly solo travel, usually for 2 weeks at a time
+                  </li>
+                  <li>
+                    I&rsquo;m currently building a portfolio curation platform
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section class="container" id="skills">
+        <div class="section-header">
+          <h3>Technical Stack</h3>
+          <p>Languages and tools I work with</p>
+        </div>
+        <div class="skills-deck">
+          <table class="skills-grid" aria-label="Technical skills">
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <img src="assets/images/skills/Azure.png" alt="Azure" />
+              </td>
+              <td>
+                <img src="assets/images/skills/Git.png" alt="Git" />
+              </td>
+              <td>
+                <img src="assets/images/skills/Rust.png" alt="Rust" />
+              </td>
+              <td>
+                <img src="assets/images/skills/Github.png" alt="Github" />
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <img src="assets/images/skills/Ansible.png" alt="Ansible" />
+              </td>
+              <td>
+                <img src="assets/images/skills/aws.png" alt="AWS" />
+              </td>
+              <td>
+                <img src="assets/images/skills/C.png" alt="C" />
+              </td>
+              <td>
+                <img src="assets/images/skills/C++.png" alt="C++" />
+              </td>
+              <td>
+                <img src="assets/images/skills/Docker.png" alt="Docker" />
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <img src="assets/images/skills/CSS.png" alt="CSS" />
+              </td>
+              <td>
+                <img src="assets/images/skills/HTML.png" alt="HTML" />
+              </td>
+              <td>
+                <img src="assets/images/skills/FastAPI.png" alt="FastAPI" />
+              </td>
+              <td>
+                <img src="assets/images/skills/Figma.png" alt="Figma" />
+              </td>
+              <td>
+                <img src="assets/images/skills/Gitlab.png" alt="GitLab" />
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <img src="assets/images/skills/Grafana.png" alt="Grafana" />
+              </td>
+              <td>
+                <img src="assets/images/skills/Jenkins.png" alt="Jenkins" />
+              </td>
+              <td>
+                <img
+                  src="assets/images/skills/Kubernetes.png"
+                  alt="Kubernetes"
+                />
+              </td>
+              <td>
+                <img src="assets/images/skills/Mysql.png" alt="MySQL" />
+              </td>
+              <td>
+                <img src="assets/images/skills/Nodejs.png" alt="Node.js" />
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <img
+                  src="assets/images/skills/Prometheus.png"
+                  alt="Prometheus"
+                />
+              </td>
+              <td>
+                <img src="assets/images/skills/Python.png" alt="Python" />
+              </td>
+              <td>
+                <img src="assets/images/skills/Reactjs.png" alt="React.js" />
+              </td>
+              <td>
+                <img src="assets/images/skills/Redis.png" alt="Redis" />
+              </td>
+
+              <td>
+                <img src="assets/images/skills/Terraform.png" alt="Terraform" />
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+      <section class="container" id="projects">
+        <div class="section-header">
+          <h3>My Projects</h3>
+          <p>Here are some of my recent works</p>
+        </div>
+        <div class="projects-deck">
+          <div class="projects-track" id="projects-track"></div>
+        </div>
+      </section>
+
+      <section class="container" id="experience">
+        <div class="section-header">
+          <h3>My Experience</h3>
+          <p>Here is my professional background</p>
+        </div>
+        <div class="experience-deck">
+          <div>
+            <div class="exp-card">
+              <p class="exp-card-title">Full-Stack Engineer</p>
+              <p class="exp-card-company">Star Tech</p>
+              <p class="exp-card-duration">
+                Jan 2022 - Present<br />Manaus, AM - Brazil
+              </p>
+              <p class="exp-card-description">
+                At Star Tech, I lead the development of scalable web
+                applications using React and Node.js, collaborating closely with
+                cross-functional teams to deliver high-quality software
+                solutions that meet client needs and drive business growth.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="contact">
+        <div class="contact-left">
+          <div class="contact-title">
+            <img
+              src="assets/images/ContactMainIcon.svg"
+              class="contact-title-icon"
+              alt=""
+              aria-hidden="true"
+            />
+            <h3>Shahriar Islam</h3>
+          </div>
+          <p>
+            Have a project in mind, a collaboration idea, or just want to say
+            hello? I&rsquo;d love to hear from you. Feel free to reach out using
+            the form below or through my social links. I&rsquo;ll get back to
+            you as soon as possible.
+          </p>
+          <div class="contact-links">
+            <a
+              href="mailto:shahriar.islam@example.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                height="24"
+                width="24"
+                viewBox="0 0 16 16"
+                fill="white"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 4.5c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v.3L8 
+  8.5 2 4.8v-.3zm0 1.9 5.6 3.5c.25.15.55.15.8 
+  0L14 6.4V11.5c0 .55-.45 1-1 1H3c-.55 
+  0-1-.45-1-1V6.4z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/shahriar-islam"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                height="24"
+                width="24"
+                viewBox="0 0 16 16"
+                fill="white"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.5 2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM2.5 6h2v7h-2V6zm4 
+  0h1.9v1h.03c.26-.5.9-1 1.87-1 2 0 2.37 1.32 
+  2.37 3.03V13h-2v-3.5c0-.83-.02-1.9-1.16-1.9-1.16 
+  0-1.34.9-1.34 1.84V13h-2V6z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/shahriar-islam"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                height="24"
+                width="24"
+                viewBox="0 0 16 16"
+                fill="white"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+  0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+  -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07
+  -1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
+  0 0 .67-.21 2.2.82a7.66 7.66 0 0 1 2-.27c.68 0 1.36.09 2 .27
+  1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
+  0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+  0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8
+  c0-4.42-3.58-8-8-8z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="contact-right">
+          <img
+            src="assets/images/ContactFeature.png"
+            alt="Contact Illustration"
+          />
+        </div>
+      </section>
+
+      <img
+        src="assets/images/Spinner.svg"
+        class="spinner"
+        alt=""
+        aria-hidden="true"
+      />
+    </main>
+  </body>
+</html>
