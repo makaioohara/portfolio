@@ -1,8 +1,8 @@
 export function initHeader() {
   const root = document.documentElement;
   const header = document.querySelector("header");
-  const navMoreToggle = document.getElementById("nav-more-toggle");
-  const navMoreMenu = document.getElementById("nav-more-menu");
+  const navMoreToggle = document.getElementById("header-nav-more-toggle");
+  const navMoreMenu = document.getElementById("header-nav-more-menu");
 
   function syncHeaderHeight() {
     const headerHeight = header ? header.offsetHeight : 0;
@@ -17,7 +17,7 @@ export function initHeader() {
     navMoreToggle.setAttribute("aria-expanded", String(isOpen));
     navMoreToggle.setAttribute(
       "aria-label",
-      isOpen ? "Close more navigation links" : "Open more navigation links"
+      isOpen ? "Close more navigation links" : "Open more navigation links",
     );
     navMoreMenu.hidden = !isOpen;
     navMoreMenu.classList.toggle("is-open", isOpen);
@@ -35,12 +35,12 @@ export function initHeader() {
   });
 
   document.addEventListener("click", (event) => {
-    if (!event.target.closest(".nav-more")) {
+    if (!event.target.closest(".header-nav__more")) {
       setMenuState(false);
     }
   });
 
-  document.querySelectorAll(".nav-more-menu a").forEach((link) => {
+  document.querySelectorAll(".header-nav__more-menu a").forEach((link) => {
     link.addEventListener("click", () => {
       setMenuState(false);
     });

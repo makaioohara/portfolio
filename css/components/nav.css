@@ -5,13 +5,13 @@ header {
   padding: 16px;
 }
 
-.nav {
+.header-nav {
   display: flex;
   justify-content: center;
   position: relative;
 }
 
-.nav-list {
+.header-nav__list {
   position: relative;
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@ header {
   padding: 20px 32px;
 }
 
-.nav-list::before {
+.header-nav__list::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -31,12 +31,12 @@ header {
   pointer-events: none;
 }
 
-.nav-list > * {
+.header-nav__list > * {
   position: relative;
   z-index: 1;
 }
 
-.nav-list a {
+.header-nav__list a {
   color: var(--white);
   font-family: var(--ff-menu);
   font-weight: 500;
@@ -44,21 +44,21 @@ header {
   white-space: nowrap;
 }
 
-.nav-list a:hover {
+.header-nav__list a:hover {
   text-shadow: 0px 0px 0.8px var(--lime);
   color: var(--lime);
 }
 
-.nav-list a.active {
+.header-nav__list a.header-nav__link--active {
   text-shadow: 0px 0px 0.8px var(--lime);
   color: var(--lime);
 }
 
-.nav-more {
+.header-nav__more {
   position: static;
 }
 
-.nav-more-icon {
+.header-nav__more-toggle {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -68,25 +68,25 @@ header {
   border: none;
 }
 
-.nav-more-icon img {
+.header-nav__more-toggle img {
   width: 18px;
   height: auto;
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.nav-more-icon[aria-expanded="true"] img {
+.header-nav__more-toggle[aria-expanded="true"] img {
   transform: rotate(180deg);
 }
 
-.nav-more-icon:focus-visible,
-.nav-list a:focus-visible,
-.more-menu-card:focus-visible,
-.more-menu-link:focus-visible {
+.header-nav__more-toggle:focus-visible,
+.header-nav__list a:focus-visible,
+.header-nav__more-card:focus-visible,
+.header-nav__more-link:focus-visible {
   outline: 2px solid var(--lime);
   outline-offset: 4px;
 }
 
-.nav-more-menu {
+.header-nav__more-menu {
   position: absolute;
   top: calc(var(--headersize, 72px) - 16px);
   left: 50%;
@@ -105,22 +105,22 @@ header {
   max-width: calc(100vw - 32px);
 }
 
-.nav-more-menu[hidden] {
+.header-nav__more-menu[hidden] {
   display: none;
 }
 
-.nav-more-menu.is-open {
+.header-nav__more-menu.is-open {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
 
-.more-menu-left {
+.header-nav__more-panel {
   display: flex;
   gap: 32px;
 }
 
-.more-menu-card {
+.header-nav__more-card {
   width: 220px;
   flex-shrink: 0;
   position: relative;
@@ -128,7 +128,7 @@ header {
   overflow: hidden;
 }
 
-.more-menu-card img {
+.header-nav__more-card img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -136,11 +136,11 @@ header {
   transition: var(--transit);
 }
 
-.more-menu-card:hover img {
+.header-nav__more-card:hover img {
   filter: brightness(1.1);
 }
 
-.more-menu-card-text {
+.header-nav__more-card-text {
   position: absolute;
   top: 0;
   left: 0;
@@ -159,7 +159,7 @@ header {
   word-break: break-word;
 }
 
-.more-menu-card-text span {
+.header-nav__more-card-text span {
   color: var(--white);
   font-family: var(--ff-menu);
   font-weight: 500;
@@ -167,25 +167,25 @@ header {
   transition: var(--transit);
 }
 
-.more-menu-card-text p {
+.header-nav__more-card-text p {
   color: var(--ash);
   font-family: var(--ff-meta);
   font-size: var(--fs-meta);
   transition: var(--transit);
 }
 
-.more-menu-right {
+.header-nav__more-actions {
   width: 160px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.more-menu-link {
+.header-nav__more-link {
   display: block;
 }
 
-.more-menu-link span {
+.header-nav__more-link span {
   color: var(--white);
   font-family: var(--ff-menu);
   font-weight: 500;
@@ -193,41 +193,41 @@ header {
   transition: var(--transit);
 }
 
-.more-menu-link p {
+.header-nav__more-link p {
   color: var(--ash);
   font-family: var(--ff-meta);
   font-size: var(--fs-meta);
   transition: var(--transit);
 }
 
-.more-menu-card-text:hover span,
-.more-menu-card-text:hover p,
-.more-menu-link:hover span,
-.more-menu-link:hover p {
+.header-nav__more-card-text:hover span,
+.header-nav__more-card-text:hover p,
+.header-nav__more-link:hover span,
+.header-nav__more-link:hover p {
   text-shadow: 0 0 0.8px var(--lime);
   color: var(--lime);
 }
 
 @media (max-width: 768px) {
-  .nav-list {
+  .header-nav__list {
     flex-wrap: wrap;
     gap: 16px;
   }
 
-  .nav-more-menu {
+  .header-nav__more-menu {
     flex-direction: column;
     width: calc(100vw - 64px);
   }
 
-  .more-menu-left {
+  .header-nav__more-panel {
     flex-direction: column;
   }
 
-  .more-menu-card {
+  .header-nav__more-card {
     width: 100%;
   }
 
-  .more-menu-right {
+  .header-nav__more-actions {
     width: 100%;
   }
 }

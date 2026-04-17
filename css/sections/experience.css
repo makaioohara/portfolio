@@ -1,10 +1,10 @@
-#experience {
+#section-experience {
   display: flex;
   min-height: calc(100svh - var(--headersize, 0px));
   flex-direction: column;
 }
 
-#experience.container {
+#section-experience.section__container {
   position: relative;
   z-index: 1;
   display: flex;
@@ -14,13 +14,13 @@
   justify-content: center;
 }
 
-.experience-deck {
+.experience-section__deck {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.exp-card {
+.experience-section__card {
   max-width: 500px;
   background: var(--indigo);
   border: 3px solid var(--purple);
@@ -31,7 +31,7 @@
   flex: 1;
 }
 
-.exp-card-title {
+.experience-section__card-title {
   color: var(--orange);
   text-transform: uppercase;
   font-family: var(--ff-section-title);
@@ -39,17 +39,17 @@
   font-weight: 900;
 }
 
-.exp-card-company {
+.experience-section__card-company {
   font-size: var(--fs-content-title);
 }
 
-.exp-card-duration {
+.experience-section__card-duration {
   color: var(--ash);
   margin-bottom: 16px;
   font-size: var(--fs-meta);
 }
 
-.exp-card-description {
+.experience-section__card-description {
   color: var(--white);
   font-size: var(--fs-content);
 }

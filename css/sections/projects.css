@@ -1,10 +1,10 @@
-#projects {
+#section-projects {
   display: flex;
   min-height: calc(100svh - var(--headersize, 0px));
   flex-direction: column;
 }
 
-#projects.container {
+#section-projects.section__container {
   position: relative;
   z-index: 1;
   display: flex;
@@ -14,7 +14,7 @@
   justify-content: center;
 }
 
-.projects-deck {
+.projects-section__deck {
   width: 100%;
   max-width: 100%;
   overflow: hidden;
@@ -34,7 +34,7 @@
   );
 }
 
-.projects-track {
+.projects-section__track {
   display: flex;
   gap: 16px;
   width: max-content;
@@ -42,23 +42,23 @@
   animation: scroll-left 26s linear infinite;
 }
 
-.projects-group {
+.projects-section__group {
   display: flex;
   gap: 16px;
   flex-shrink: 0;
 }
 
-.projects-track:hover {
+.projects-section__track:hover {
   animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .projects-track {
+  .projects-section__track {
     animation: none;
     width: 100%;
   }
 
-  .projects-group {
+  .projects-section__group {
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
@@ -84,7 +84,7 @@
   cursor: pointer;
 }
 
-.project-card-bg {
+.project-card__bg {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -92,11 +92,11 @@
   transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.project-card:hover .project-card-bg {
+.project-card:hover .project-card__bg {
   transform: scale(1.08);
 }
 
-.project-card-overlay {
+.project-card__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -106,7 +106,7 @@
   );
 }
 
-.project-card-num {
+.project-card__num {
   position: absolute;
   top: 32px;
   right: 32px;
@@ -115,7 +115,7 @@
   letter-spacing: 0.09em;
 }
 
-.project-card-content {
+.project-card__content {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -123,7 +123,7 @@
   padding: 32px;
 }
 
-.project-card-tag {
+.project-card__tag {
   display: inline-block;
   font-size: var(--fs-tag);
   letter-spacing: 0.09em;
@@ -137,13 +137,13 @@
   margin-bottom: 10px;
 }
 
-.project-card-title {
+.project-card__title {
   font-size: var(--fs-content-title);
   color: var(--orange);
   margin-bottom: 5px;
 }
 
-.project-card-sub {
+.project-card__subtitle {
   font-size: var(--fs-meta);
   font-weight: 300;
   color: var(--ash);

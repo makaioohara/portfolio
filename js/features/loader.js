@@ -42,7 +42,7 @@ function fireOrbs(loader) {
     const translateX = Math.cos((angle * Math.PI) / 180) * distance;
     const translateY = Math.sin((angle * Math.PI) / 180) * distance;
 
-    orb.classList.add("orb");
+    orb.classList.add("loader-orb");
     orb.style.cssText = `
       width: ${size}px;
       height: ${size}px;
@@ -58,9 +58,9 @@ function fireOrbs(loader) {
 }
 
 export function initLoader() {
-  const loader = document.getElementById("loader");
-  const loaderImg = loader?.querySelector(".loader-img");
-  const content = document.getElementById("content");
+  const loader = document.getElementById("page-loader");
+  const loaderImg = loader?.querySelector(".page-loader__image");
+  const content = document.getElementById("page-content");
 
   ensureOrbStyles();
 

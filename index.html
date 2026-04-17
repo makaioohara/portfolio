@@ -15,62 +15,82 @@
     <script type="module" src="js/app.js"></script>
   </head>
   <body>
-    <div id="loader">
-      <div class="loader-inner">
+    <div id="page-loader">
+      <div class="page-loader__inner">
         <img
           src="assets/images/LoadingFlower.png"
           alt="Loading animation"
-          class="loader-img"
+          class="page-loader__image"
         />
       </div>
     </div>
-    <main id="content">
+    <main id="page-content">
       <header>
-        <nav class="nav" aria-label="Primary navigation">
-          <ul class="nav-list">
-            <li><a href="#home" class="active">HOME</a></li>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#skills">SKILLS</a></li>
-            <li><a href="#projects">PROJECTS</a></li>
-            <li><a href="#experience">EXPERIENCE</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-            <li class="nav-more">
+        <nav class="header-nav" aria-label="Primary navigation">
+          <ul class="header-nav__list">
+            <li>
+              <a
+                href="#section-home"
+                class="header-nav__link header-nav__link--active"
+                >HOME</a
+              >
+            </li>
+            <li><a href="#section-about" class="header-nav__link">ABOUT</a></li>
+            <li>
+              <a href="#section-skills" class="header-nav__link">SKILLS</a>
+            </li>
+            <li>
+              <a href="#section-projects" class="header-nav__link">PROJECTS</a>
+            </li>
+            <li>
+              <a href="#section-experience" class="header-nav__link"
+                >EXPERIENCE</a
+              >
+            </li>
+            <li>
+              <a href="#section-contact" class="header-nav__link">CONTACT</a>
+            </li>
+            <li class="header-nav__more">
               <button
                 type="button"
-                id="nav-more-toggle"
-                class="nav-more-icon"
+                id="header-nav-more-toggle"
+                class="header-nav__more-toggle"
                 aria-expanded="false"
-                aria-controls="nav-more-menu"
+                aria-controls="header-nav-more-menu"
                 aria-haspopup="true"
                 aria-label="Open more navigation links"
               >
                 <img src="assets/images/Ham.svg" alt="" aria-hidden="true" />
               </button>
-              <div id="nav-more-menu" class="nav-more-menu" hidden>
-                <div class="more-menu-left">
-                  <a href="#uses" class="more-menu-card">
+              <div
+                id="header-nav-more-menu"
+                class="header-nav__more-menu"
+                hidden
+              >
+                <div class="header-nav__more-panel">
+                  <a href="#uses" class="header-nav__more-card">
                     <img
                       src="assets/images/NavUses.jpg"
                       alt="Uses workspace preview"
                     />
-                    <div class="more-menu-card-text">
+                    <div class="header-nav__more-card-text">
                       <div><span>USES</span></div>
                       <p>A peek into my digital workspace</p>
                     </div>
                   </a>
-                  <a href="#bucket" class="more-menu-card">
+                  <a href="#bucket" class="header-nav__more-card">
                     <img
                       src="assets/images/NavBucketList.jpg"
                       alt="Bucket List Card"
                     />
-                    <div class="more-menu-card-text">
+                    <div class="header-nav__more-card-text">
                       <div><span>BUCKET LIST</span></div>
                       <p>Things to do at least once in life</p>
                     </div>
                   </a>
                 </div>
-                <div class="more-menu-right">
-                  <a href="#stats" class="more-menu-link">
+                <div class="header-nav__more-actions">
+                  <a href="#stats" class="header-nav__more-link">
                     <div><span>HOBBIES</span></div>
                     <p>New skills and adventures</p>
                   </a>
@@ -81,23 +101,23 @@
         </nav>
       </header>
 
-      <section class="container" id="home">
-        <div class="home-left">
+      <section class="section__container" id="section-home">
+        <div class="home-section__left">
           <h1>I&rsquo;m Shahriar</h1>
           <p>Devops Engineer, Cloud Architect</p>
         </div>
-        <div class="home-deck">
-          <div class="home-card home-card-front">
+        <div class="home-section__deck">
+          <div class="home-section__card home-section__card--front">
             <img src="assets/images/Photocard1.png" alt="Front Card" />
           </div>
-          <div class="home-card home-card-back">
+          <div class="home-section__card home-section__card--back">
             <img src="assets/images/Photocard2.png" alt="Back Card" />
           </div>
         </div>
       </section>
 
-      <section class="container" id="about">
-        <div class="section-header">
+      <section class="section__container" id="section-about">
+        <div class="section__header">
           <h3>About</h3>
           <p>
             &lt; This is where you can get to know me better and explore my
@@ -105,10 +125,10 @@
           </p>
         </div>
 
-        <div class="about-deck">
-          <div class="about-left">
-            <div class="about-card">
-              <p class="about-card-title">Bio</p>
+        <div class="about-section__deck">
+          <div class="about-section__left">
+            <div class="about-section__card">
+              <p class="about-section__card-title">Bio</p>
               <p>
                 I am a Software Engineer who works with the React ecosystem and
                 writes to teach people how to rebuild and redefine fundamental
@@ -116,23 +136,23 @@
                 Indonesia.
               </p>
             </div>
-            <a href="#" class="about-card about-card-resume">
+            <a href="#" class="about-section__card about-section__card--resume">
               <p>My Resume&ensp;&ensp;</p>
               <img src="assets/images/ResumeIcon.svg" alt="Resume Icon" />
             </a>
           </div>
 
-          <div class="about-right">
-            <div class="about-card about-card-intro">
+          <div class="about-section__right">
+            <div class="about-section__card about-section__card--intro">
               <p>
                 I value simplicity, steady improvement, and building meaningful
                 solutions&mdash;focusing on clean design, practical decisions,
                 and quality work that creates real impact.
               </p>
             </div>
-            <div class="about-card about-card-current">
-              <p class="about-card-title">What I&rsquo;m Up To Now</p>
-              <div class="about-current-content">
+            <div class="about-section__card about-section__card--current">
+              <p class="about-section__card-title">What I&rsquo;m Up To Now</p>
+              <div class="about-section__current-content">
                 <img src="assets/images/AboutQMark.png" alt="Question Mark" />
                 <ul>
                   <li>
@@ -153,13 +173,13 @@
       </section>
 
       <!-- Skills Section -->
-      <section class="container" id="skills">
-        <div class="section-header">
+      <section class="section__container" id="section-skills">
+        <div class="section__header">
           <h3>Technical Stack</h3>
           <p>Languages and tools I work with</p>
         </div>
-        <div class="skills-deck">
-          <table class="skills-grid" aria-label="Technical skills">
+        <div class="skills-section__deck">
+          <table class="skills-section__grid" aria-label="Technical skills">
             <tr>
               <td></td>
               <td></td>
@@ -310,30 +330,33 @@
         </div>
       </section>
 
-      <section class="container" id="projects">
-        <div class="section-header">
+      <section class="section__container" id="section-projects">
+        <div class="section__header">
           <h3>My Projects</h3>
           <p>Here are some of my recent works</p>
         </div>
-        <div class="projects-deck">
-          <div class="projects-track" id="projects-track"></div>
+        <div class="projects-section__deck">
+          <div
+            class="projects-section__track"
+            id="projects-carousel-track"
+          ></div>
         </div>
       </section>
 
-      <section class="container" id="experience">
-        <div class="section-header">
+      <section class="section__container" id="section-experience">
+        <div class="section__header">
           <h3>My Experience</h3>
           <p>Here is my professional background</p>
         </div>
-        <div class="experience-deck">
+        <div class="experience-section__deck">
           <div>
-            <div class="exp-card">
-              <p class="exp-card-title">Full-Stack Engineer</p>
-              <p class="exp-card-company">Star Tech</p>
-              <p class="exp-card-duration">
+            <div class="experience-section__card">
+              <p class="experience-section__card-title">Full-Stack Engineer</p>
+              <p class="experience-section__card-company">Star Tech</p>
+              <p class="experience-section__card-duration">
                 Jan 2022 - Present<br />Manaus, AM - Brazil
               </p>
-              <p class="exp-card-description">
+              <p class="experience-section__card-description">
                 At Star Tech, I lead the development of scalable web
                 applications using React and Node.js, collaborating closely with
                 cross-functional teams to deliver high-quality software
@@ -344,12 +367,12 @@
         </div>
       </section>
 
-      <section class="container" id="contact">
-        <div class="contact-left">
-          <div class="contact-title">
+      <section class="section__container" id="section-contact">
+        <div class="contact-section__left">
+          <div class="contact-section__title">
             <img
               src="assets/images/ContactMainIcon.svg"
-              class="contact-title-icon"
+              class="contact-section__title-icon"
               alt=""
               aria-hidden="true"
             />
@@ -361,7 +384,7 @@
             the form below or through my social links. I&rsquo;ll get back to
             you as soon as possible.
           </p>
-          <div class="contact-links">
+          <div class="contact-section__links">
             <a
               href="mailto:shahriar.islam@example.com"
               target="_blank"
@@ -429,7 +452,7 @@
             </a>
           </div>
         </div>
-        <div class="contact-right">
+        <div class="contact-section__illustration">
           <img
             src="assets/images/ContactFeature.png"
             alt="Contact Illustration"
@@ -439,7 +462,7 @@
 
       <img
         src="assets/images/Spinner.svg"
-        class="spinner"
+        class="page-spinner"
         alt=""
         aria-hidden="true"
       />

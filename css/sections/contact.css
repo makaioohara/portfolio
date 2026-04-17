@@ -1,9 +1,9 @@
-#contact {
+#section-contact {
   display: flex;
   min-height: calc(100svh - var(--headersize, 0px));
 }
 
-#contact.container {
+#section-contact.section__container {
   position: relative;
   z-index: 1;
   display: flex;
@@ -14,25 +14,25 @@
   justify-content: space-between;
 }
 
-.contact-title {
+.contact-section__title {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
 }
 
-.contact-title-icon {
+.contact-section__title-icon {
   width: 32px;
   height: 32px;
 }
 
-.contact-title h3 {
+.contact-section__title h3 {
   margin-bottom: 0;
   color: var(--white);
   font-size: var(--fs-content-title);
 }
 
-.contact-left p {
+.contact-section__left p {
   max-width: 360px;
   min-width: 300px;
   color: var(--ash);
@@ -40,13 +40,13 @@
   margin-bottom: 16px;
 }
 
-.contact-links {
+.contact-section__links {
   display: flex;
   align-items: center;
   gap: 18px;
 }
 
-.contact-links a {
+.contact-section__links a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -55,18 +55,18 @@
   background: var(--indigo);
 }
 
-.contact-links a:hover,
-.contact-links a:focus-visible {
+.contact-section__links a:hover,
+.contact-section__links a:focus-visible {
   transform: translateY(-3px);
 }
 
-.contact-links img {
+.contact-section__links img {
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
 
-.contact-right {
+.contact-section__illustration {
   position: relative;
   display: flex;
   justify-content: flex-end;
@@ -74,7 +74,7 @@
   min-height: 620px;
 }
 
-.contact-right avg {
+.contact-section__illustration avg {
   position: relative;
   width: clamp(560px, 63vw, 820px);
 }

@@ -20,13 +20,15 @@ section h3 {
   text-transform: uppercase;
 }
 
-.section-header {
+.section__header {
   text-align: center;
 }
 
-.section-header p {
+.section__header p {
   margin-bottom: 32px;
   color: var(--white);
   font-family: var(--ff-content);
   font-size: var(--fs-section-desc);
 }
+
+

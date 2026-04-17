@@ -1,18 +1,19 @@
-#loader {
+#page-loader {
   position: fixed;
   inset: 0;
-  background: #0D0D0D;
+  background: #0d0d0d;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
   overflow: hidden;
-  transition: opacity 1.4s cubic-bezier(0.76, 0, 0.24, 1),
-              visibility 1.4s cubic-bezier(0.76, 0, 0.24, 1);
+  transition:
+    opacity 1.4s cubic-bezier(0.76, 0, 0.24, 1),
+    visibility 1.4s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-#loader::before {
-  content: '';
+#page-loader::before {
+  content: "";
   position: absolute;
   width: 560px;
   height: 560px;
@@ -28,8 +29,8 @@
   will-change: transform, opacity;
 }
 
-#loader::after {
-  content: '';
+#page-loader::after {
+  content: "";
   position: absolute;
   width: 260px;
   height: 260px;
@@ -46,11 +47,18 @@
 }
 
 @keyframes ambientPulse {
-  0%, 100% { transform: scale(0.95); opacity: 0.2; }
-  50%       { transform: scale(1.08); opacity: 0.55; }
+  0%,
+  100% {
+    transform: scale(0.95);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.55;
+  }
 }
 
-.loader-inner {
+.page-loader__inner {
   position: relative;
   display: flex;
   justify-content: center;
@@ -59,14 +67,12 @@
   height: 220px;
 }
 
-.loader-img {
+.page-loader__image {
   width: 170px;
   opacity: 0;
   will-change: transform, opacity, filter;
   transform: translateY(-36px) scale(0.9) rotate(3deg);
-  filter:
-    drop-shadow(0 0 0px rgba(191, 22, 39, 0))
-    brightness(0.08);
+  filter: drop-shadow(0 0 0px rgba(191, 22, 39, 0)) brightness(0.08);
   animation:
     descendIn 2.8s cubic-bezier(0.4, 0, 0.15, 1) forwards 0.4s,
     mourningDrift 14s ease-in-out infinite 3.4s;
@@ -78,44 +84,46 @@
   0% {
     opacity: 0;
     transform: translateY(-36px) scale(0.9) rotate(3deg);
-    filter:
-      drop-shadow(0 0 0px rgba(191, 22, 39, 0))
-      brightness(0.08);
+    filter: drop-shadow(0 0 0px rgba(191, 22, 39, 0)) brightness(0.08);
   }
   35% {
     opacity: 0.55;
     transform: translateY(-12px) scale(0.95) rotate(1.2deg);
-    filter:
-      drop-shadow(0 0 5px rgba(191, 22, 39, 0.3))
-      brightness(0.55);
+    filter: drop-shadow(0 0 5px rgba(191, 22, 39, 0.3)) brightness(0.55);
   }
   65% {
     opacity: 0.9;
     transform: translateY(4px) scale(1.01) rotate(-0.5deg);
-    filter:
-      drop-shadow(0 0 10px rgba(191, 22, 39, 0.5))
-      drop-shadow(0 0 28px rgba(140, 10, 25, 0.2))
-      brightness(1.1);
+    filter: drop-shadow(0 0 10px rgba(191, 22, 39, 0.5))
+      drop-shadow(0 0 28px rgba(140, 10, 25, 0.2)) brightness(1.1);
   }
   100% {
     opacity: 1;
     transform: translateY(0px) scale(1) rotate(0deg);
-    filter:
-      drop-shadow(0 0 5px rgba(191, 22, 39, 0.35))
-      drop-shadow(0 0 14px rgba(140, 10, 25, 0.12))
-      brightness(0.88);
+    filter: drop-shadow(0 0 5px rgba(191, 22, 39, 0.35))
+      drop-shadow(0 0 14px rgba(140, 10, 25, 0.12)) brightness(0.88);
   }
 }
 
 @keyframes mourningDrift {
-  0%   { transform: translateY(0px)  rotate(0deg)    scale(1); }
-  20%  { transform: translateY(-5px) rotate(-0.8deg) scale(0.998); }
-  45%  { transform: translateY(-9px) rotate(0.6deg)  scale(1.003); }
-  70%  { transform: translateY(-4px) rotate(-0.5deg) scale(0.999); }
-  100% { transform: translateY(0px)  rotate(0deg)    scale(1); }
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  20% {
+    transform: translateY(-5px) rotate(-0.8deg) scale(0.998);
+  }
+  45% {
+    transform: translateY(-9px) rotate(0.6deg) scale(1.003);
+  }
+  70% {
+    transform: translateY(-4px) rotate(-0.5deg) scale(0.999);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
 }
 
-.orb {
+.loader-orb {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
@@ -123,7 +131,7 @@
   will-change: transform, opacity;
 }
 
-.loader-img.fade-out {
+.page-loader__image.fade-out {
   animation: fadeDown 1.2s cubic-bezier(0.4, 0, 1, 1) forwards !important;
 }
 
@@ -131,40 +139,34 @@
   0% {
     opacity: 1;
     transform: translateY(0px) scale(1) rotate(0deg);
-    filter:
-      drop-shadow(0 0 5px rgba(191, 22, 39, 0.35))
-      drop-shadow(0 0 14px rgba(140, 10, 25, 0.12))
-      brightness(0.88);
+    filter: drop-shadow(0 0 5px rgba(191, 22, 39, 0.35))
+      drop-shadow(0 0 14px rgba(140, 10, 25, 0.12)) brightness(0.88);
   }
   25% {
     opacity: 0.95;
     transform: translateY(-4px) scale(1.02) rotate(-0.8deg);
-    filter:
-      drop-shadow(0 0 8px rgba(191, 22, 39, 0.45))
-      drop-shadow(0 0 20px rgba(140, 10, 25, 0.18))
-      brightness(0.95);
+    filter: drop-shadow(0 0 8px rgba(191, 22, 39, 0.45))
+      drop-shadow(0 0 20px rgba(140, 10, 25, 0.18)) brightness(0.95);
   }
   100% {
     opacity: 0;
     transform: translateY(22px) scale(0.9) rotate(1.5deg);
-    filter:
-      drop-shadow(0 0 0px rgba(191, 22, 39, 0))
-      brightness(0.05);
+    filter: drop-shadow(0 0 0px rgba(191, 22, 39, 0)) brightness(0.05);
   }
 }
 
-#loader.fade-out {
+#page-loader.fade-out {
   opacity: 0;
   visibility: hidden;
   transition-delay: 0.5s;
   pointer-events: none;
 }
 
-#content {
+#page-content {
   opacity: 0;
   transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-#content.show {
+#page-content.show {
   opacity: 1;
 }

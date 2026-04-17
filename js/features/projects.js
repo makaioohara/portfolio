@@ -23,13 +23,13 @@ function createCard(project) {
   card.setAttribute("aria-label", `${project.num}. ${project.title}`);
 
   card.innerHTML = `
-    <div class="project-card-bg" style="background-image: url('${project.bg}')"></div>
-    <div class="project-card-overlay"></div>
-    <div class="project-card-num">${project.num}</div>
-    <div class="project-card-content">
-      <span class="project-card-tag">${project.tag}</span>
-      <p class="project-card-title">${project.title}</p>
-      <p class="project-card-sub">${project.sub}</p>
+    <div class="project-card__bg" style="background-image: url('${project.bg}')"></div>
+    <div class="project-card__overlay"></div>
+    <div class="project-card__num">${project.num}</div>
+    <div class="project-card__content">
+      <span class="project-card__tag">${project.tag}</span>
+      <p class="project-card__title">${project.title}</p>
+      <p class="project-card__subtitle">${project.sub}</p>
     </div>
   `;
 
@@ -38,7 +38,7 @@ function createCard(project) {
 
 function createProjectGroup(projectList, isClone = false) {
   const group = document.createElement("div");
-  group.className = "projects-group";
+  group.className = "projects-section__group";
   group.setAttribute("aria-hidden", String(isClone));
 
   projectList.forEach((project) => {
@@ -53,7 +53,7 @@ function syncLoopDistance(track, group) {
 }
 
 export function initProjects() {
-  const track = document.getElementById("projects-track");
+  const track = document.getElementById("projects-carousel-track");
   if (!track) {
     return;
   }
