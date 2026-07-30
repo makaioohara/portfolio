@@ -7,15 +7,37 @@ const projects = [
     bg: "assets/images/Project-BreastCancer.png",
   },
   {
-    title: "Weather Dashboard",
-    sub: "Real-time data visualization",
-    tag: "Vue / D3.js",
+    title: "Game Server",
+    sub: "Multiplayer game server for minecraft using Java and MySQL.",
+    tag: "Java, MySQL",
     num: " ",
-    bg: "https://images.unsplash.com/photo-1504608524841-42584120d693?w=600&q=80",
+    bg: "assets/images/Project-Game.png",
   },
 ];
 
+const PROJECTS_GAP = 16;
 let projectsResizeObserver;
+
+function preloadBackground(bgElement, imageUrl) {
+  if (!bgElement || !imageUrl) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    const image = new Image();
+    image.decoding = "async";
+    image.onload = () => {
+      bgElement.style.backgroundImage = `url('${imageUrl}')`;
+      resolve();
+    };
+    image.onerror = () => {
+      bgElement.style.backgroundImage =
+        "linear-gradient(135deg, rgba(255, 122, 0, 0.24), rgba(0, 0, 0, 0.9))";
+      resolve();
+    };
+    image.src = imageUrl;
+  });
+}
 
 function createCard(project) {
   const card = document.createElement("article");
@@ -23,7 +45,7 @@ function createCard(project) {
   card.setAttribute("aria-label", `${project.num}. ${project.title}`);
 
   card.innerHTML = `
-    <div class="project-card__bg" style="background-image: url('${project.bg}')"></div>
+    <div class="project-card__bg"></div>
     <div class="project-card__overlay"></div>
     <div class="project-card__num">${project.num}</div>
     <div class="project-card__content">
@@ -36,23 +58,45 @@ function createCard(project) {
   return card;
 }
 
-function createProjectGroup(projectList, isClone = false) {
+async function createProjectGroup(projectList, isClone = false) {
   const group = document.createElement("div");
   group.className = "projects-section__group";
   group.setAttribute("aria-hidden", String(isClone));
 
-  projectList.forEach((project) => {
-    group.appendChild(createCard(project));
+  const preloadTasks = projectList.map((project) => {
+    const card = createCard(project);
+    group.appendChild(card);
+    const bgElement = card.querySelector(".project-card__bg");
+    return preloadBackground(bgElement, project.bg);
   });
 
+  await Promise.all(preloadTasks);
   return group;
 }
 
 function syncLoopDistance(track, group) {
-  track.style.setProperty("--projects-loop-distance", `${group.scrollWidth}px`);
+  const gap = Number.parseFloat(
+    getComputedStyle(track).columnGap ||
+      getComputedStyle(track).gap ||
+      PROJECTS_GAP,
+  );
+  const distance = group.getBoundingClientRect().width;
+  track.style.setProperty("--projects-loop-distance", `${distance}px`);
 }
 
-export function initProjects() {
+function scheduleLoopSync(track, group) {
+  window.requestAnimationFrame(() => {
+    syncLoopDistance(track, group);
+  });
+
+  if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+    window.requestIdleCallback(() => {
+      syncLoopDistance(track, group);
+    });
+  }
+}
+
+export async function initProjects() {
   const track = document.getElementById("projects-carousel-track");
   if (!track) {
     return;
@@ -67,21 +111,37 @@ export function initProjects() {
   if (prefersReducedMotion) {
     track.style.removeProperty("--projects-loop-distance");
     projectsResizeObserver?.disconnect();
-    track.appendChild(createProjectGroup(projects));
+    track.appendChild(await createProjectGroup(projects));
     return;
   }
 
-  const firstGroup = createProjectGroup(projects);
-  const secondGroup = createProjectGroup(projects, true);
+  const firstGroup = await createProjectGroup(projects);
 
-  track.append(firstGroup, secondGroup);
-  syncLoopDistance(track, firstGroup);
+  track.append(firstGroup);
+  let cloneGroup;
+
+  while (track.scrollWidth < window.innerWidth * 2) {
+    cloneGroup = await createProjectGroup(projects, true);
+    track.appendChild(cloneGroup);
+  }
+
+  scheduleLoopSync(track, firstGroup);
+  scheduleLoopSync(track, firstGroup);
+  track.classList.add("projects-section__track--ready");
 
   projectsResizeObserver?.disconnect();
   projectsResizeObserver = new ResizeObserver(() => {
     syncLoopDistance(track, firstGroup);
   });
   projectsResizeObserver.observe(firstGroup);
+
+  window.addEventListener(
+    "load",
+    () => {
+      syncLoopDistance(track, firstGroup);
+    },
+    { once: true },
+  );
 }
 
 export const initProject = initProjects;

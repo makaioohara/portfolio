@@ -79,7 +79,7 @@
 }
 
 .about-section__current-content li::before {
-  content: "?";
+  content: "✦";
   color: var(--purple);
 }
 
