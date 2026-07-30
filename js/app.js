@@ -1,3 +1,4 @@
+import { onReady } from "./core/utils.js";
 import { initHeader } from "./features/header.js";
 import { initLoader } from "./features/loader.js";
 import { initProjects } from "./features/projects.js";
@@ -7,17 +8,21 @@ function initLenis() {
     return;
   }
 
-  new window.Lenis({
-    autoRaf: true,
-    autoToggle: true,
-    anchors: true,
-    allowNestedScroll: true,
-    naiveDimensions: true,
-    stopInertiaOnNavigate: true,
-  });
+  if (!window.__portfolioLenis) {
+    window.__portfolioLenis = new window.Lenis({
+      autoRaf: true,
+      autoToggle: true,
+      anchors: true,
+      allowNestedScroll: true,
+      naiveDimensions: true,
+      stopInertiaOnNavigate: true,
+    });
+  }
 }
 
-initLenis();
-initHeader();
-initLoader();
-initProjects();
+onReady(() => {
+  initLenis();
+  initHeader();
+  initLoader();
+  initProjects();
+});

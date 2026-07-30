@@ -1,3 +1,5 @@
+import { prefersReducedMotion } from "../core/utils.js";
+
 const MIN_DISPLAY_MS = 2800;
 const FORCE_DISMISS_MS = 6000;
 const IMAGE_FADE_DELAY_MS = 380;
@@ -31,7 +33,9 @@ function fireOrbs(loader) {
     return;
   }
 
-  for (let i = 0; i < 10; i += 1) {
+  const orbCount = prefersReducedMotion() ? 0 : 10;
+
+  for (let i = 0; i < orbCount; i += 1) {
     const orb = document.createElement("div");
     const size = Math.random() * 10 + 5;
     const angle = Math.random() * 360;
@@ -62,13 +66,17 @@ export function initLoader() {
   const loaderImg = loader?.querySelector(".page-loader__image");
   const content = document.getElementById("page-content");
 
+  if (!loader || !loaderImg || !content) {
+    return;
+  }
+
   ensureOrbStyles();
 
   let dismissed = false;
   const startTime = Date.now();
 
   function dismissLoader() {
-    if (dismissed || !loader || !loaderImg) {
+    if (dismissed) {
       return;
     }
 
@@ -76,20 +84,24 @@ export function initLoader() {
     fireOrbs(loader);
     loaderImg.classList.add("fade-out");
 
-    setTimeout(() => {
+    window.setTimeout(() => {
       loader.classList.add("fade-out");
     }, IMAGE_FADE_DELAY_MS);
 
-    setTimeout(() => {
-      content?.classList.add("show");
+    window.setTimeout(() => {
+      content.classList.add("show");
     }, CONTENT_REVEAL_DELAY_MS);
   }
 
-  window.addEventListener("load", () => {
-    const elapsed = Date.now() - startTime;
-    const remaining = Math.max(0, MIN_DISPLAY_MS - elapsed);
-    setTimeout(dismissLoader, remaining);
-  });
+  window.addEventListener(
+    "load",
+    () => {
+      const elapsed = Date.now() - startTime;
+      const remaining = Math.max(0, MIN_DISPLAY_MS - elapsed);
+      window.setTimeout(dismissLoader, remaining);
+    },
+    { once: true },
+  );
 
-  setTimeout(dismissLoader, FORCE_DISMISS_MS);
+  window.setTimeout(dismissLoader, FORCE_DISMISS_MS);
 }

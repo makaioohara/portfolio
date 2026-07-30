@@ -1,3 +1,5 @@
+import { prefersReducedMotion } from "../core/utils.js";
+
 const projects = [
   {
     title: "Breast Cancer AI",
@@ -80,7 +82,7 @@ function syncLoopDistance(track, group) {
       getComputedStyle(track).gap ||
       PROJECTS_GAP,
   );
-  const distance = group.getBoundingClientRect().width;
+  const distance = group.getBoundingClientRect().width + gap;
   track.style.setProperty("--projects-loop-distance", `${distance}px`);
 }
 
@@ -104,11 +106,7 @@ export async function initProjects() {
 
   track.replaceChildren();
 
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
-
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion()) {
     track.style.removeProperty("--projects-loop-distance");
     projectsResizeObserver?.disconnect();
     track.appendChild(await createProjectGroup(projects));
@@ -118,14 +116,12 @@ export async function initProjects() {
   const firstGroup = await createProjectGroup(projects);
 
   track.append(firstGroup);
-  let cloneGroup;
 
   while (track.scrollWidth < window.innerWidth * 2) {
-    cloneGroup = await createProjectGroup(projects, true);
+    const cloneGroup = await createProjectGroup(projects, true);
     track.appendChild(cloneGroup);
   }
 
-  scheduleLoopSync(track, firstGroup);
   scheduleLoopSync(track, firstGroup);
   track.classList.add("projects-section__track--ready");
 
