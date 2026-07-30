@@ -57,6 +57,24 @@
   animation-play-state: paused;
 }
 
+@media (max-width: 900px) {
+  .project-card {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-card {
+    width: 180px;
+    height: 180px;
+  }
+
+  .project-card__content {
+    padding: 20px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .projects-section__track {
     animation: none;

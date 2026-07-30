@@ -94,3 +94,17 @@
     gap: 20px;
   }
 }
+
+@media (max-width: 600px) {
+  .about-section__card {
+    padding: 24px 20px;
+  }
+
+  .about-section__current-content {
+    gap: 14px;
+  }
+
+  .about-section__current-content li {
+    line-height: 1.8;
+  }
+}
