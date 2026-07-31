@@ -159,3 +159,28 @@
   font-weight: 300;
   color: var(--ash);
 }
+
+@media (max-width: 820px) {
+  #section-projects.section__container {
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .projects-section__deck {
+    -webkit-mask: none;
+    mask: none;
+  }
+
+  .projects-section__track {
+    animation: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .projects-section__group {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

@@ -19,6 +19,19 @@ const projects = [
 
 const PROJECTS_GAP = 16;
 let projectsResizeObserver;
+let carouselMode = "";
+let resizeFrame = 0;
+
+function isMobileViewport() {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 820px)").matches
+  );
+}
+
+function getCarouselMode() {
+  return `${prefersReducedMotion() ? "reduced" : "normal"}-${isMobileViewport() ? "mobile" : "desktop"}`;
+}
 
 function preloadBackground(bgElement, imageUrl) {
   if (!bgElement || !imageUrl) {
@@ -98,23 +111,34 @@ function scheduleLoopSync(track, group) {
   }
 }
 
-export async function initProjects() {
+async function renderProjectsCarousel() {
   const track = document.getElementById("projects-carousel-track");
   if (!track) {
     return;
   }
 
-  track.replaceChildren();
+  const nextMode = getCarouselMode();
+  if (nextMode === carouselMode && track.dataset.mode === nextMode) {
+    const firstGroup = track.querySelector(".projects-section__group");
+    if (firstGroup) {
+      syncLoopDistance(track, firstGroup);
+    }
+    return;
+  }
 
-  if (prefersReducedMotion()) {
-    track.style.removeProperty("--projects-loop-distance");
-    projectsResizeObserver?.disconnect();
+  carouselMode = nextMode;
+  track.dataset.mode = nextMode;
+  track.replaceChildren();
+  track.classList.remove("projects-section__track--ready");
+  track.style.removeProperty("--projects-loop-distance");
+  projectsResizeObserver?.disconnect();
+
+  if (prefersReducedMotion() || isMobileViewport()) {
     track.appendChild(await createProjectGroup(projects));
     return;
   }
 
   const firstGroup = await createProjectGroup(projects);
-
   track.append(firstGroup);
 
   while (track.scrollWidth < window.innerWidth * 2) {
@@ -125,19 +149,43 @@ export async function initProjects() {
   scheduleLoopSync(track, firstGroup);
   track.classList.add("projects-section__track--ready");
 
-  projectsResizeObserver?.disconnect();
   projectsResizeObserver = new ResizeObserver(() => {
     syncLoopDistance(track, firstGroup);
   });
   projectsResizeObserver.observe(firstGroup);
+}
 
-  window.addEventListener(
-    "load",
-    () => {
-      syncLoopDistance(track, firstGroup);
-    },
-    { once: true },
-  );
+function scheduleProjectsRefresh() {
+  if (resizeFrame) {
+    window.cancelAnimationFrame(resizeFrame);
+  }
+
+  resizeFrame = window.requestAnimationFrame(() => {
+    resizeFrame = 0;
+    void renderProjectsCarousel();
+  });
+}
+
+export async function initProjects() {
+  const track = document.getElementById("projects-carousel-track");
+  if (!track) {
+    return;
+  }
+
+  window.addEventListener("resize", scheduleProjectsRefresh);
+  window.addEventListener("load", scheduleProjectsRefresh, { once: true });
+
+  if (typeof window.matchMedia === "function") {
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+    reducedMotionQuery.addEventListener?.("change", scheduleProjectsRefresh);
+    window
+      .matchMedia("(max-width: 820px)")
+      .addEventListener?.("change", scheduleProjectsRefresh);
+  }
+
+  await renderProjectsCarousel();
 }
 
 export const initProject = initProjects;

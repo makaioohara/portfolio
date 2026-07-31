@@ -27,7 +27,17 @@
     <main id="page-content">
       <header>
         <nav class="header-nav" aria-label="Primary navigation">
-          <ul class="header-nav__list">
+          <button
+            type="button"
+            id="header-nav-toggle"
+            class="header-nav__toggle"
+            aria-expanded="false"
+            aria-controls="header-nav-list"
+            aria-label="Open navigation menu"
+          >
+            <img src="assets/images/Ham.svg" alt="" aria-hidden="true" />
+          </button>
+          <ul class="header-nav__list" id="header-nav-list">
             <li>
               <a
                 href="#section-home"
@@ -101,6 +111,7 @@
         </nav>
       </header>
 
+      <!-- Home Section -->
       <section class="section__container" id="section-home">
         <div class="home-section__left">
           <h1>I&rsquo;m Shahriar</h1>
@@ -116,6 +127,7 @@
         </div>
       </section>
 
+      <!-- About Section -->
       <section class="section__container" id="section-about">
         <div class="section__header">
           <h3>About</h3>
@@ -160,12 +172,20 @@
                 <img src="assets/images/AboutQMark.png" alt="Question Mark" />
                 <ul>
                   <li>
-                    I&rsquo;m a student of CSE at the Daffodil International
-                    University
+                    <p>
+                      I&rsquo;m a student of CSE at the Daffodil International
+                      University
+                    </p>
                   </li>
-                  <li>I regularly solo travel, usually for a day at a time</li>
+                  <br />
                   <li>
-                    I&rsquo;m currently building a breast cancer detection AI
+                    <p>I regularly solo travel, usually for a day at a time</p>
+                  </li>
+                  <br />
+                  <li>
+                    <p>
+                      I&rsquo;m currently building a breast cancer detection AI
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -181,157 +201,11 @@
           <p>Languages and tools I work with</p>
         </div>
         <div class="skills-section__deck">
-          <table class="skills-section__grid" aria-label="Technical skills">
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <img src="assets/images/skills/Azure.png" alt="Azure" />
-              </td>
-              <td>
-                <img src="assets/images/skills/Git.png" alt="Git" />
-              </td>
-              <td>
-                <img src="assets/images/skills/Rust.png" alt="Rust" />
-              </td>
-              <td>
-                <img src="assets/images/skills/Github.png" alt="Github" />
-              </td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <img src="assets/images/skills/Ansible.png" alt="Ansible" />
-              </td>
-              <td>
-                <img src="assets/images/skills/aws.png" alt="AWS" />
-              </td>
-              <td>
-                <img src="assets/images/skills/C.png" alt="C" />
-              </td>
-              <td>
-                <img src="assets/images/skills/C++.png" alt="C++" />
-              </td>
-              <td>
-                <img src="assets/images/skills/Docker.png" alt="Docker" />
-              </td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <img src="assets/images/skills/CSS.png" alt="CSS" />
-              </td>
-              <td>
-                <img src="assets/images/skills/HTML.png" alt="HTML" />
-              </td>
-              <td>
-                <img src="assets/images/skills/FastAPI.png" alt="FastAPI" />
-              </td>
-              <td>
-                <img src="assets/images/skills/Figma.png" alt="Figma" />
-              </td>
-              <td>
-                <img src="assets/images/skills/Gitlab.png" alt="GitLab" />
-              </td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <img src="assets/images/skills/Grafana.png" alt="Grafana" />
-              </td>
-              <td>
-                <img src="assets/images/skills/Jenkins.png" alt="Jenkins" />
-              </td>
-              <td>
-                <img
-                  src="assets/images/skills/Kubernetes.png"
-                  alt="Kubernetes"
-                />
-              </td>
-              <td>
-                <img src="assets/images/skills/Mysql.png" alt="MySQL" />
-              </td>
-              <td>
-                <img src="assets/images/skills/Nodejs.png" alt="Node.js" />
-              </td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <img
-                  src="assets/images/skills/Prometheus.png"
-                  alt="Prometheus"
-                />
-              </td>
-              <td>
-                <img src="assets/images/skills/Python.png" alt="Python" />
-              </td>
-              <td>
-                <img src="assets/images/skills/Reactjs.png" alt="React.js" />
-              </td>
-              <td>
-                <img src="assets/images/skills/Redis.png" alt="Redis" />
-              </td>
-
-              <td>
-                <img src="assets/images/skills/Terraform.png" alt="Terraform" />
-              </td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </table>
+          <img src="assets/images/TableBG.svg" alt="Skills Illustration" />
         </div>
       </section>
 
+      <!-- Projects Section -->
       <section class="section__container" id="section-projects">
         <div class="section__header">
           <h3>My Projects</h3>
@@ -345,6 +219,7 @@
         </div>
       </section>
 
+      <!-- Experience Section -->
       <section class="section__container" id="section-experience">
         <div class="section__header">
           <h3>My Experience</h3>
@@ -369,6 +244,7 @@
         </div>
       </section>
 
+      <!-- Contact Section -->
       <section class="section__container" id="section-contact">
         <div class="contact-section__left">
           <div class="contact-section__title">

@@ -8,29 +8,34 @@
   position: relative;
   z-index: 1;
   display: flex;
-  padding-bottom: 30px;
   width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.skills-section__deck {
+  width: min(100%, 640px);
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.skills-section__deck {
-  background-image: url("/assets/images/TableBG.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.skills-section__deck img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
-.skills-section__grid td {
-  border: 1px solid transparent;
-  width: 70px;
-  height: 70px;
-  text-align: center;
-  vertical-align: middle;
-}
+@media (max-width: 820px) {
+  #section-skills.section__container {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
 
-.skills-section__grid td img {
-  width: 32px;
-  height: 32px;
-  margin: 0 auto;
+  .skills-section__deck {
+    width: min(100%, 460px);
+  }
 }
