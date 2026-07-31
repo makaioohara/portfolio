@@ -34,27 +34,3 @@
   height: 32px;
   margin: 0 auto;
 }
-
-@media (max-width: 900px) {
-  .skills-section__grid td {
-    width: 56px;
-    height: 56px;
-  }
-
-  .skills-section__grid td img {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-@media (max-width: 600px) {
-  .skills-section__grid td {
-    width: 44px;
-    height: 44px;
-  }
-
-  .skills-section__grid td img {
-    width: 20px;
-    height: 20px;
-  }
-}

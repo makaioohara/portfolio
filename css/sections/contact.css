@@ -78,36 +78,3 @@
   position: relative;
   width: clamp(560px, 63vw, 820px);
 }
-
-@media (max-width: 900px) {
-  #section-contact.section__container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-  }
-
-  .contact-section__left p {
-    min-width: 0;
-    max-width: 100%;
-  }
-
-  .contact-section__illustration {
-    min-height: auto;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .contact-section__illustration img {
-    width: min(100%, 560px);
-  }
-}
-
-@media (max-width: 600px) {
-  .contact-section__links {
-    flex-wrap: wrap;
-  }
-
-  .contact-section__title {
-    flex-wrap: wrap;
-  }
-}

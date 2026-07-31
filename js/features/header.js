@@ -1,6 +1,7 @@
 export function initHeader() {
   const root = document.documentElement;
   const header = document.querySelector("header");
+  const navList = document.querySelector(".header-nav__list");
   const navMoreToggle = document.getElementById("header-nav-more-toggle");
   const navMoreMenu = document.getElementById("header-nav-more-menu");
   const navMore = document.querySelector(".header-nav__more");
@@ -11,17 +12,25 @@ export function initHeader() {
   }
 
   function setMenuState(isOpen) {
-    if (!navMoreToggle || !navMoreMenu) {
+    if (!navMoreToggle) {
       return;
     }
 
     navMoreToggle.setAttribute("aria-expanded", String(isOpen));
     navMoreToggle.setAttribute(
       "aria-label",
-      isOpen ? "Close more navigation links" : "Open more navigation links",
+      isOpen ? "Close navigation menu" : "Open navigation menu",
     );
-    navMoreMenu.hidden = !isOpen;
-    navMoreMenu.classList.toggle("is-open", isOpen);
+
+    if (isOpen) {
+      navMoreMenu?.classList.add("is-open");
+      navList?.classList.add("is-open");
+      navMoreMenu.hidden = false;
+    } else {
+      navMoreMenu?.classList.remove("is-open");
+      navList?.classList.remove("is-open");
+      navMoreMenu.hidden = true;
+    }
   }
 
   syncHeaderHeight();
@@ -37,12 +46,23 @@ export function initHeader() {
   });
 
   document.addEventListener("click", (event) => {
-    if (!navMore || !event.target.closest(".header-nav__more")) {
+    if (
+      (!navMore && !navList?.contains(event.target)) ||
+      (navMore &&
+        !event.target.closest(".header-nav__more") &&
+        !event.target.closest(".header-nav__list"))
+    ) {
       setMenuState(false);
     }
   });
 
   navMoreMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      setMenuState(false);
+    });
+  });
+
+  navList?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       setMenuState(false);
     });

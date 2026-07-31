@@ -72,31 +72,6 @@
   transform: rotate(-8deg);
 }
 
-@media (max-width: 900px) {
-  #section-home.section__container {
-    flex-direction: column;
-    justify-content: center;
-    gap: 32px;
-    text-align: center;
-  }
-
-  .home-section__left p {
-    width: min(100%, 450px);
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 600px) {
-  .home-section__deck {
-    width: 200px;
-    height: 250px;
-  }
-
-  .home-section__left h1 {
-    letter-spacing: 1.5px;
-  }
-}
-
 @keyframes swapCardFrontForward {
   0% {
     transform: rotate(8deg);
