@@ -339,6 +339,7 @@ header {
 
   .header-nav__more-menu.is-open {
     opacity: 1;
+    transform: none;
   }
 
   .header-nav__more-panel {

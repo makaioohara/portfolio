@@ -53,3 +53,9 @@
   color: var(--white);
   font-size: var(--fs-content);
 }
+
+@media (max-width: 430px) {
+  .experience-section__card {
+    padding: 32px 38px;
+  }
+}
