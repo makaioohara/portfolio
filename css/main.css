@@ -6,6 +6,7 @@
 @import url("./components/nav.css");
 @import url("./sections/about.css");
 @import url("./sections/contact.css");
+@import url("./sections/photography.css");
 @import url("./sections/experience.css");
 @import url("./sections/home.css");
 @import url("./sections/projects.css");
@@ -30,5 +31,3 @@ section h3 {
   font-family: var(--ff-content);
   font-size: var(--fs-section-desc);
 }
-
-

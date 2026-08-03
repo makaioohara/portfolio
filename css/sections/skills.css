@@ -15,7 +15,7 @@
 }
 
 .skills-section__deck {
-  width: min(100%, 640px);
+  width: min(100%, 780px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,6 +36,6 @@
   }
 
   .skills-section__deck {
-    width: min(100%, 460px);
+    width: min(100%, 640px);
   }
 }

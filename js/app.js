@@ -2,6 +2,7 @@ import { onReady } from "./core/utils.js";
 import { initHeader } from "./features/header.js";
 import { initLoader } from "./features/loader.js";
 import { initProjects } from "./features/projects.js";
+import { initPhotography } from "./features/photography.js";
 import { initTextReveal } from "./features/textReveal.js";
 
 function initLenis() {
@@ -26,5 +27,6 @@ onReady(() => {
   initHeader();
   initLoader();
   initProjects();
+  initPhotography();
   initTextReveal();
 });

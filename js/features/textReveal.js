@@ -50,7 +50,7 @@ export function initTextReveal() {
         color: "var(--white)",
         ease: "none",
         stagger: 0.1,
-        duration: 0.3,
+        duration: 0.4,
         scrollTrigger: {
           trigger,
           start: "top 40%",
