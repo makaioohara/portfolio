@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "Gratina";
-  src: url("/assets/fonts/Gratina.otf") format("opentype");
+  src: url("../../assets/fonts/Gratina.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
