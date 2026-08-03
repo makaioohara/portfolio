@@ -1,3 +1,5 @@
+import { createFrameScheduler } from "../core/utils.js";
+
 export function initHeader() {
   const root = document.documentElement;
   const header = document.querySelector("header");
@@ -5,10 +7,7 @@ export function initHeader() {
   const navToggle = document.getElementById("header-nav-toggle");
   const navMoreToggle = document.getElementById("header-nav-more-toggle");
   const navMoreMenu = document.getElementById("header-nav-more-menu");
-  const navMore = document.querySelector(".header-nav__more");
   const tabletMenuQuery = window.matchMedia("(max-width: 820px)");
-  let resizeFrame = 0;
-  let activeLinkFrame = 0;
 
   function syncHeaderHeight() {
     const headerHeight = header ? header.offsetHeight : 0;
@@ -78,11 +77,6 @@ export function initHeader() {
     }, 220);
   }
 
-  function closeAllMenus() {
-    setMainMenuState(false);
-    setMoreMenuState(false);
-  }
-
   function setActiveNavLink(sectionId) {
     const targetId = sectionId?.replace(/^#/, "");
 
@@ -128,17 +122,6 @@ export function initHeader() {
     setActiveNavLink(activeId);
   }
 
-  function scheduleActiveLinkUpdate() {
-    if (activeLinkFrame) {
-      window.cancelAnimationFrame(activeLinkFrame);
-    }
-
-    activeLinkFrame = window.requestAnimationFrame(() => {
-      activeLinkFrame = 0;
-      updateActiveNavLink();
-    });
-  }
-
   function resetMenuState() {
     navList?.classList.remove("is-open");
     navMoreMenu?.classList.remove("is-open");
@@ -152,17 +135,11 @@ export function initHeader() {
     navMoreToggle?.setAttribute("aria-label", "Open navigation menu");
   }
 
-  function scheduleHeaderSync() {
-    if (resizeFrame) {
-      window.cancelAnimationFrame(resizeFrame);
-    }
-
-    resizeFrame = window.requestAnimationFrame(() => {
-      resizeFrame = 0;
-      syncHeaderHeight();
-      resetMenuState();
-    });
-  }
+  const scheduleActiveLinkUpdate = createFrameScheduler(updateActiveNavLink);
+  const scheduleHeaderSync = createFrameScheduler(() => {
+    syncHeaderHeight();
+    resetMenuState();
+  });
 
   syncHeaderHeight();
   window.addEventListener("load", syncHeaderHeight, { once: true });

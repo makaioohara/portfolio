@@ -1,4 +1,7 @@
-import { prefersReducedMotion } from "../core/utils.js";
+import {
+  createFrameScheduler,
+  prefersReducedMotion,
+} from "../core/utils.js";
 
 const projects = [
   {
@@ -20,7 +23,6 @@ const projects = [
 const PROJECTS_GAP = 16;
 let projectsResizeObserver;
 let carouselMode = "";
-let resizeFrame = 0;
 
 function isMobileViewport() {
   return (
@@ -155,16 +157,9 @@ async function renderProjectsCarousel() {
   projectsResizeObserver.observe(firstGroup);
 }
 
-function scheduleProjectsRefresh() {
-  if (resizeFrame) {
-    window.cancelAnimationFrame(resizeFrame);
-  }
-
-  resizeFrame = window.requestAnimationFrame(() => {
-    resizeFrame = 0;
-    void renderProjectsCarousel();
-  });
-}
+const scheduleProjectsRefresh = createFrameScheduler(() => {
+  void renderProjectsCarousel();
+});
 
 export async function initProjects() {
   const track = document.getElementById("projects-carousel-track");
@@ -187,5 +182,3 @@ export async function initProjects() {
 
   await renderProjectsCarousel();
 }
-
-export const initProject = initProjects;

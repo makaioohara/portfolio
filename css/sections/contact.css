@@ -1,16 +1,5 @@
-#section-contact {
-  display: flex;
-  min-height: calc(100svh - var(--headersize, 0px));
-}
-
 #section-contact.section__container {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  padding-bottom: 30px;
-  width: 100%;
   gap: 36px;
-  align-items: center;
   justify-content: space-between;
 }
 

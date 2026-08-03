@@ -24,6 +24,44 @@ body {
   box-sizing: border-box;
 }
 
+#section-home,
+#section-about,
+#section-skills,
+#section-projects,
+#section-experience,
+#section-contact {
+  display: flex;
+  min-height: calc(100svh - var(--headersize, 0px));
+}
+
+#section-about,
+#section-skills,
+#section-projects,
+#section-experience {
+  flex-direction: column;
+}
+
+#section-home.section__container,
+#section-about.section__container,
+#section-skills.section__container,
+#section-projects.section__container,
+#section-experience.section__container,
+#section-contact.section__container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+#section-about.section__container,
+#section-skills.section__container,
+#section-projects.section__container,
+#section-experience.section__container {
+  justify-content: center;
+}
+
 @media (max-width: 1080px) {
   .section__container {
     max-width: 800px;

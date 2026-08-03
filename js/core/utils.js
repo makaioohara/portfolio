@@ -13,3 +13,18 @@ export function prefersReducedMotion() {
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
 }
+
+export function createFrameScheduler(callback) {
+  let frameId = 0;
+
+  return () => {
+    if (frameId) {
+      window.cancelAnimationFrame(frameId);
+    }
+
+    frameId = window.requestAnimationFrame(() => {
+      frameId = 0;
+      callback();
+    });
+  };
+}
