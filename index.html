@@ -208,7 +208,10 @@
           <p class="reveal-text">Here are some of my recent works</p>
         </div>
         <div class="projects-section__deck">
-          <div class="projects-section__track" id="projects-carousel-track"></div>
+          <div
+            class="projects-section__track"
+            id="projects-carousel-track"
+          ></div>
         </div>
       </section>
 
@@ -300,104 +303,182 @@
         </div>
       </section>
 
-      <section class="photography-section" id="section-photography">
-        <div class="section__header">
-          <h3>Beneath the surface</h3>
-          <p class="reveal-text">
-            A photographic showcase that cycles through three stories in a
-            full-screen visual experience.
-          </p>
-        </div>
-
-        <div class="photography-section__viewport">
-          <div class="photography-section__slides" id="photography-slider">
-            <article
-              class="photography-slide photography-slide--active"
-              aria-hidden="false"
+      <section
+        class="portfolio-photo-showcase"
+        id="section-portfolio-photo-showcase"
+      >
+        <div class="portfolio-photo-showcase__shell">
+          <div class="portfolio-photo-showcase__stage">
+            <div
+              class="portfolio-photo-showcase__track"
+              id="portfolio-photo-showcase-track"
             >
-              <img
-                src="assets/images/Photocard1.png"
-                alt="Portrait in luminous studio light"
-              />
-              <div class="photography-slide__overlay"></div>
-              <div class="photography-slide__content">
-                <span class="photography-slide__eyebrow">City Reflections</span>
-                <h4 class="photography-slide__title">
-                  Quiet moments in neon rain
-                </h4>
-                <p class="photography-slide__description">
-                  A moody frame capturing the calm after the storm, where light
-                  and shadow dance beneath the surface of the city streets.
-                </p>
-              </div>
-            </article>
+              <article
+                class="portfolio-photo-showcase__card portfolio-photo-showcase__card--active"
+                data-photo="story-1"
+                aria-hidden="false"
+              >
+                <img
+                  src="assets/images/Photography1.webp"
+                  alt="Portrait in luminous studio light"
+                />
+                <div class="portfolio-photo-showcase__card-overlay"></div>
+                <div class="portfolio-photo-showcase__card-content">
+                  <header class="portfolio-photo-showcase__header">
+                    <p class="portfolio-photo-showcase__eyebrow">
+                      Frame by frame
+                    </p>
+                    <h3 class="portfolio-photo-showcase__title">
+                      Beneath the surface
+                    </h3>
+                  </header>
+                  <p class="portfolio-photo-showcase__card-description">
+                    The Night Café (French: Le Café de nuit) is an oil painting
+                    created by Dutch artist Vincent van Gogh in September 1888
+                    in Arles. Its title is inscribed lower right beneath the
+                    signature.
+                  </p>
+                  <div class="portfolio-photo-showcase__card-meta-grid">
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>CAMERA</span>
+                      <strong>Nothing 3a (50mm)</strong>
+                    </div>
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>SETTINGS</span>
+                      <strong>ISO: 1600 · SS: 30s · WB: 4500</strong>
+                    </div>
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>PLACE</span>
+                      <strong>Tangail, Budipara</strong>
+                    </div>
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>DATE</span>
+                      <strong>Tuesday, April 7</strong>
+                    </div>
+                  </div>
+                </div>
+              </article>
 
-            <article class="photography-slide" aria-hidden="true">
-              <img
-                src="assets/images/Photocard2.png"
-                alt="Portrait with vibrant purple highlights"
-              />
-              <div class="photography-slide__overlay"></div>
-              <div class="photography-slide__content">
-                <span class="photography-slide__eyebrow">Studio Story</span>
-                <h4 class="photography-slide__title">
-                  A portrait of quiet confidence
-                </h4>
-                <p class="photography-slide__description">
-                  Soft texture and bold color combine to reveal a moment of
-                  presence that is both intimate and cinematic.
-                </p>
-              </div>
-            </article>
+              <article
+                class="portfolio-photo-showcase__card"
+                data-photo="story-2"
+                aria-hidden="true"
+              >
+                <img
+                  src="assets/images/Photography2.webp"
+                  alt="Portrait with vibrant purple highlights"
+                />
+                <div class="portfolio-photo-showcase__card-overlay"></div>
+                <div class="portfolio-photo-showcase__card-content">
+                  <header class="portfolio-photo-showcase__header">
+                    <p class="portfolio-photo-showcase__eyebrow">
+                      Frame by frame
+                    </p>
+                    <h3 class="portfolio-photo-showcase__title">
+                      Beneath the surface
+                    </h3>
+                  </header>
+                  <p class="portfolio-photo-showcase__card-description">
+                    The Night Café (French: Le Café de nuit) is an oil painting
+                    created by Dutch artist Vincent van Gogh in September 1888
+                    in Arles. Its title is inscribed lower right beneath the
+                    signature.
+                  </p>
+                  <div class="portfolio-photo-showcase__card-meta-grid">
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>CAMERA</span>
+                      <strong>Nothing 3a (50mm)</strong>
+                    </div>
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>SETTINGS</span>
+                      <strong>ISO: 1600 · SS: 30s · WB: 4500</strong>
+                    </div>
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>PLACE</span>
+                      <strong>Tangail, Budipara</strong>
+                    </div>
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>DATE</span>
+                      <strong>Tuesday, April 7</strong>
+                    </div>
+                  </div>
+                </div>
+              </article>
 
-            <article class="photography-slide" aria-hidden="true">
-              <img
-                src="assets/images/NavUses.jpg"
-                alt="Interior frame of a modern creative workspace"
-              />
-              <div class="photography-slide__overlay"></div>
-              <div class="photography-slide__content">
-                <span class="photography-slide__eyebrow">Hidden Spaces</span>
-                <h4 class="photography-slide__title">
-                  Stories found off the beaten path
-                </h4>
-                <p class="photography-slide__description">
-                  An atmospheric composition that draws the eye into textures,
-                  reflections, and the unspoken narrative inside the frame.
-                </p>
-              </div>
-            </article>
-          </div>
+              <article
+                class="portfolio-photo-showcase__card"
+                data-photo="story-3"
+                aria-hidden="true"
+              >
+                <img
+                  src="assets/images/Photography3.webp"
+                  alt="Interior frame of a modern creative workspace"
+                />
+                <div class="portfolio-photo-showcase__card-overlay"></div>
+                <div class="portfolio-photo-showcase__card-content">
+                  <header class="portfolio-photo-showcase__header">
+                    <p class="portfolio-photo-showcase__eyebrow">
+                      Frame by frame
+                    </p>
+                    <h3 class="portfolio-photo-showcase__title">
+                      Beneath the surface
+                    </h3>
+                  </header>
+                  <p class="portfolio-photo-showcase__card-description">
+                    The Night Café (French: Le Café de nuit) is an oil painting
+                    created by Dutch artist Vincent van Gogh in September 1888
+                    in Arles. Its title is inscribed lower right beneath the
+                    signature.
+                  </p>
+                  <div class="portfolio-photo-showcase__card-meta-grid">
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>CAMERA</span>
+                      <strong>Nothing 3a (50mm)</strong>
+                    </div>
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>SETTINGS</span>
+                      <strong>ISO: 1600 · SS: 30s · WB: 4500</strong>
+                    </div>
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>PLACE</span>
+                      <strong>Tangail, Budipara</strong>
+                    </div>
+                    <div class="portfolio-photo-showcase__card-meta-item">
+                      <span>DATE</span>
+                      <strong>Tuesday, April 7</strong>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
 
-          <div
-            class="photography-section__controls"
-            role="tablist"
-            aria-label="Photography slides"
-          >
-            <button
-              type="button"
-              class="photography-section__control"
-              aria-pressed="true"
-              aria-label="Slide 1"
+            <div
+              class="portfolio-photo-showcase__paginator"
+              role="tablist"
+              aria-label="Photo stories"
             >
-              01
-            </button>
-            <button
-              type="button"
-              class="photography-section__control"
-              aria-pressed="false"
-              aria-label="Slide 2"
-            >
-              02
-            </button>
-            <button
-              type="button"
-              class="photography-section__control"
-              aria-pressed="false"
-              aria-label="Slide 3"
-            >
-              03
-            </button>
+              <button
+                type="button"
+                class="portfolio-photo-showcase__dot"
+                data-photo-target="story-1"
+                aria-pressed="true"
+                aria-label="Show story 1"
+              ></button>
+              <button
+                type="button"
+                class="portfolio-photo-showcase__dot"
+                data-photo-target="story-2"
+                aria-pressed="false"
+                aria-label="Show story 2"
+              ></button>
+              <button
+                type="button"
+                class="portfolio-photo-showcase__dot"
+                data-photo-target="story-3"
+                aria-pressed="false"
+                aria-label="Show story 3"
+              ></button>
+            </div>
           </div>
         </div>
       </section>

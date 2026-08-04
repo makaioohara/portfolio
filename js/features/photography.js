@@ -1,83 +1,160 @@
-const SLIDE_DURATION = 6000;
-let slideTimer = 0;
-let currentSlideIndex = 0;
+export function initPhotography() {
+  const showcase = document.getElementById("section-portfolio-photo-showcase");
 
-function getSlides() {
-  return Array.from(
-    document.querySelectorAll("#photography-slider .photography-slide"),
+  if (!showcase) return;
+
+  const paginatorButtons = showcase.querySelectorAll(
+    ".portfolio-photo-showcase__dot",
   );
-}
 
-function getControls() {
-  return Array.from(document.querySelectorAll(".photography-section__control"));
-}
+  const cards = showcase.querySelectorAll(".portfolio-photo-showcase__card");
 
-function activateSlide(index) {
-  const slides = getSlides();
-  const controls = getControls();
+  if (!paginatorButtons.length || !cards.length) return;
 
-  if (!slides.length || !controls.length) {
-    return;
-  }
+  let currentIndex = 0;
+  let previousIndex = 0;
+  let slideshowInterval;
 
-  currentSlideIndex = index % slides.length;
-  if (currentSlideIndex < 0) {
-    currentSlideIndex += slides.length;
-  }
+  const SLIDESHOW_INTERVAL = 8000;
 
-  slides.forEach((slide, slideIndex) => {
-    const isActive = slideIndex === currentSlideIndex;
-    slide.classList.toggle("photography-slide--active", isActive);
-    slide.setAttribute("aria-hidden", String(!isActive));
-  });
+  paginatorButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const targetPhoto = button.dataset.photoTarget;
 
-  controls.forEach((control, controlIndex) => {
-    const isActive = controlIndex === currentSlideIndex;
-    control.setAttribute("aria-pressed", String(isActive));
-  });
-}
+      previousIndex = currentIndex;
+      currentIndex = index;
 
-function nextSlide() {
-  activateSlide(currentSlideIndex + 1);
-}
+      switchToCard(targetPhoto);
+      updatePaginator(targetPhoto);
 
-function scheduleSlideAdvance() {
-  if (slideTimer) {
-    window.clearTimeout(slideTimer);
-  }
-
-  slideTimer = window.setTimeout(() => {
-    nextSlide();
-    scheduleSlideAdvance();
-  }, SLIDE_DURATION);
-}
-
-function setupPhotographyControls() {
-  const controls = getControls();
-  controls.forEach((control, index) => {
-    control.addEventListener("click", () => {
-      activateSlide(index);
-      scheduleSlideAdvance();
+      resetSlideshow();
     });
   });
-}
 
-export function initPhotography() {
-  const slider = document.getElementById("photography-slider");
-  if (!slider) {
-    return;
+  const firstPhoto = paginatorButtons[0].dataset.photoTarget;
+
+  switchToCard(firstPhoto);
+  updatePaginator(firstPhoto);
+
+  startSlideshow();
+
+  function startSlideshow() {
+    slideshowInterval = setInterval(() => {
+      previousIndex = currentIndex;
+      currentIndex = (currentIndex + 1) % paginatorButtons.length;
+
+      const targetPhoto = paginatorButtons[currentIndex].dataset.photoTarget;
+
+      switchToCard(targetPhoto);
+      updatePaginator(targetPhoto);
+    }, SLIDESHOW_INTERVAL);
   }
 
-  activateSlide(0);
-  setupPhotographyControls();
-  scheduleSlideAdvance();
+  function resetSlideshow() {
+    clearInterval(slideshowInterval);
+    startSlideshow();
+  }
 
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      window.clearTimeout(slideTimer);
-      slideTimer = 0;
-      return;
+  function switchToCard(photoId) {
+    const direction = currentIndex > previousIndex ? "right" : "left";
+
+    cards.forEach((card) => {
+      const cardPhoto = card.dataset.photo;
+
+      if (cardPhoto === photoId) {
+        card.classList.add("portfolio-photo-showcase__card--active");
+        card.setAttribute("data-slide-direction", direction);
+        card.setAttribute("aria-hidden", "false");
+
+        const metaGrid = card.querySelector(
+          ".portfolio-photo-showcase__card-meta-grid",
+        );
+
+        if (metaGrid) {
+          animateMetaDecode(metaGrid);
+        }
+      } else {
+        card.classList.remove("portfolio-photo-showcase__card--active");
+        card.removeAttribute("data-slide-direction");
+        card.setAttribute("aria-hidden", "true");
+      }
+    });
+  }
+
+  function updatePaginator(photoId) {
+    paginatorButtons.forEach((button) => {
+      button.setAttribute(
+        "aria-pressed",
+        button.dataset.photoTarget === photoId,
+      );
+    });
+  }
+
+  function animateMetaDecode(metaGrid) {
+    const card = metaGrid.closest(".portfolio-photo-showcase__card-content");
+
+    if (!card) return;
+
+    const description = card.querySelector(
+      ".portfolio-photo-showcase__card-description",
+    );
+
+    if (description) {
+      animateTextDecode(description, 0);
     }
-    scheduleSlideAdvance();
-  });
+
+    const strongElements = metaGrid.querySelectorAll("strong");
+
+    strongElements.forEach((element, index) => {
+      animateTextDecode(element, index + 1);
+    });
+  }
+
+  function animateTextDecode(textEl, elementIndex) {
+    gsap.killTweensOf(textEl);
+
+    const originalText = textEl.dataset.originalText || textEl.textContent;
+
+    textEl.dataset.originalText = originalText;
+
+    const chars = originalText.split("");
+    const delay = elementIndex * 0.09;
+
+    const state = {
+      progress: 0,
+    };
+
+    gsap.to(state, {
+      progress: chars.length,
+      duration: Math.min(chars.length * 0.025, 0.6),
+      delay,
+      ease: "power3.out",
+
+      onUpdate() {
+        const revealCount = Math.floor(state.progress);
+
+        let output = "";
+
+        for (let i = 0; i < chars.length; i++) {
+          if (i < revealCount || chars[i] === " ") {
+            output += chars[i];
+          } else {
+            output += randomChar();
+          }
+        }
+
+        textEl.textContent = output;
+      },
+
+      onComplete() {
+        textEl.textContent = originalText;
+      },
+    });
+  }
+
+  function randomChar() {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+-=[]";
+
+    return chars[Math.floor(Math.random() * chars.length)];
+  }
 }
