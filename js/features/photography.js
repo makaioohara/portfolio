@@ -19,6 +19,8 @@ export function initPhotography() {
 
   paginatorButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
+      if (index === currentIndex) return;
+
       const targetPhoto = button.dataset.photoTarget;
 
       previousIndex = currentIndex;
@@ -91,6 +93,10 @@ export function initPhotography() {
   }
 
   function animateMetaDecode(metaGrid) {
+    if (metaGrid.dataset.decoding === "true") return;
+
+    metaGrid.dataset.decoding = "true";
+
     const card = metaGrid.closest(".portfolio-photo-showcase__card-content");
 
     if (!card) return;
@@ -148,6 +154,14 @@ export function initPhotography() {
 
       onComplete() {
         textEl.textContent = originalText;
+
+        const parentGrid = textEl.closest(
+          ".portfolio-photo-showcase__card-meta-grid",
+        );
+
+        if (parentGrid) {
+          parentGrid.dataset.decoding = "false";
+        }
       },
     });
   }
