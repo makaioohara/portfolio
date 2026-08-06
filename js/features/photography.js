@@ -101,59 +101,47 @@ export function initPhotography() {
 
     if (!card) return;
 
-    const description = card.querySelector(
-      ".portfolio-photo-showcase__card-description",
-    );
-
-    if (description) {
-      animateTextDecode(description, 0);
-    }
-
+    // Skip animating the description element; only animate strong elements.
     const strongElements = metaGrid.querySelectorAll("strong");
 
     strongElements.forEach((element, index) => {
-      animateTextDecode(element, index + 1);
+      animateTextTypewriter(element, index);
     });
   }
 
-  function animateTextDecode(textEl, elementIndex) {
+  function animateTextTypewriter(textEl, elementIndex) {
     gsap.killTweensOf(textEl);
 
     const originalText = textEl.dataset.originalText || textEl.textContent;
-
     textEl.dataset.originalText = originalText;
 
-    const chars = originalText.split("");
-    const delay = elementIndex * 0.09;
+    const delay = elementIndex * 0.08;
+    const charsLength = originalText.length;
 
-    const state = {
-      progress: 0,
-    };
+    const state = { progress: 0 };
+
+    const caret = document.createElement("span");
+    caret.className = "portfolio-typewriter-caret";
 
     gsap.to(state, {
-      progress: chars.length,
-      duration: Math.min(chars.length * 0.025, 0.6),
+      progress: charsLength,
+      duration: Math.min(charsLength * 0.04, 1),
       delay,
-      ease: "power3.out",
+      ease: "power2.out",
+
+      onStart() {
+        textEl.setAttribute("aria-live", "polite");
+      },
 
       onUpdate() {
         const revealCount = Math.floor(state.progress);
-
-        let output = "";
-
-        for (let i = 0; i < chars.length; i++) {
-          if (i < revealCount || chars[i] === " ") {
-            output += chars[i];
-          } else {
-            output += randomChar();
-          }
-        }
-
-        textEl.textContent = output;
+        textEl.textContent = originalText.slice(0, revealCount);
+        textEl.appendChild(caret);
       },
 
       onComplete() {
         textEl.textContent = originalText;
+        if (caret.parentNode) caret.parentNode.removeChild(caret);
 
         const parentGrid = textEl.closest(
           ".portfolio-photo-showcase__card-meta-grid",
@@ -164,11 +152,5 @@ export function initPhotography() {
         }
       },
     });
-  }
-
-  function randomChar() {
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+-=[]";
-
-    return chars[Math.floor(Math.random() * chars.length)];
   }
 }
