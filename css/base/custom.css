@@ -11,12 +11,34 @@ body {
   transform: translateX(-50%);
   width: 900px;
   height: 900px;
-  animation: spin 80s linear infinite;
-  will-change: transform, opacity;
+  aspect-ratio: 1 / 1;
+  will-change: opacity;
   pointer-events: none;
   z-index: 0;
   opacity: 1;
   transition: opacity 0.3s ease;
+}
+
+.page-spinner__layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  width: 100%;
+  height: auto;
+  animation: spin 80s linear infinite;
+  will-change: transform;
+}
+
+.page-spinner__layer--medium {
+  width: 78%;
+  animation-duration: 64s;
+}
+
+.page-spinner__layer--small {
+  width: 58%;
+  animation-duration: 48s;
 }
 
 .section__container {
@@ -98,10 +120,10 @@ body {
 
 @keyframes spin {
   from {
-    transform: translateX(-50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
 
   to {
-    transform: translateX(-50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
